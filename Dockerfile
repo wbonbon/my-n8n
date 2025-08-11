@@ -12,8 +12,10 @@ COPY package.json /tmp/package.json
 WORKDIR /tmp
 RUN npm install
 
-# n8nのnode_modulesにインストールしたパッケージを移動
-RUN mv /tmp/node_modules/* /usr/local/lib/node_modules/n8n/node_modules/
+# n8nのnode_modulesにインストールしたパッケージをコピーして権限を変更
+RUN cp -R /tmp/node_modules/* /usr/local/lib/node_modules/n8n/node_modules/ && \
+    chown -R node:node /usr/local/lib/node_modules/n8n/node_modules/iconv-lite && \
+    chown -R node:node /usr/local/lib/node_modules/n8n/node_modules/jschardet
 
 # ユーザーをnodeに戻す
 USER node

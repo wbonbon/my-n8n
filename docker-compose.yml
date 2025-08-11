@@ -1,0 +1,19 @@
+services:
+  n8n-dev:
+    build: .  # Dockerfileが同じディレクトリにあるため
+    container_name: n8n-dev
+    restart: unless-stopped
+    ports:
+      - "5679:5678"
+    volumes:
+      - n8n_dev_data:/home/node/.n8n
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_EXTERNAL_PACKAGES=iconv-lite,jschardet
+      - NODE_ENV=production
+      - TZ=Asia/Tokyo
+
+volumes:
+  n8n_dev_data:

@@ -1,6 +1,8 @@
 services:
   n8n-dev:
-    build: .  # Dockerfileが同じディレクトリにあるため
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: n8n-dev
     restart: unless-stopped
     ports:
@@ -16,5 +18,5 @@ services:
       - TZ=Asia/Tokyo
 
 volumes:
-  n8n_dev_data:  # ここでボリューム名を定義
-    external: true # 外部ボリュームとして参照
+  n8n_dev_data:
+    external: true

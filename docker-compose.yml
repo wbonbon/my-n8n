@@ -16,4 +16,5 @@ services:
       - TZ=Asia/Tokyo
 
 volumes:
-  n8n_dev_data:
+  n8n_dev_data:  # ここでボリューム名を定義
+    external: true # 外部ボリュームとして参照

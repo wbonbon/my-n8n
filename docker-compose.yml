@@ -6,7 +6,7 @@ services:
     ports:
       - "5679:5678"
     volumes:
-      - n8n_dev_data:/home/node/.n8n
+      - data:/home/node/.n8n
     environment:
       - N8N_HOST=localhost
       - N8N_PORT=5678
